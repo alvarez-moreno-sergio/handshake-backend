@@ -1,0 +1,27 @@
+{
+  "name": "handshake-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvarez-moreno-sergio/handshake-backend.git"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alvarez-moreno-sergio/handshake-backend/issues"
+  },
+  "homepage": "https://github.com/alvarez-moreno-sergio/handshake-backend#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0"
+  }
+}
