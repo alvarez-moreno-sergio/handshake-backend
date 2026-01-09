@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const registerSchema = z.object({
   name: z.string().min(1).max(100),
-  avatarUrl: z.url().optional().default(""),
+  avatarUrl: z.union([z.url().max(2048), z.literal("")]),
   publicKey: z.string().min(32).max(4096),
   publicSignKey: z.string().min(32).max(4096)
 });

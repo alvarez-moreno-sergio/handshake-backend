@@ -10,7 +10,11 @@ router.post("/register", (req: Request, res: Response) => {
 
     const parseBody = registerSchema.safeParse(req.body);
     if (!parseBody.success) {
-        return res.status(400).json({ error: "Invalid payload" });
+        return res.status(400).json({
+            msg: "Rejected: Invalid registration data",
+            issues: parseBody.error.issues,
+            body: req.body
+        });
     }
 
     const {name, avatarUrl, publicKey, publicSignKey} = parseBody.data;
