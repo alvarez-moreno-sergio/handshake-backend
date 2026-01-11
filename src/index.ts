@@ -15,6 +15,7 @@ const HOST: string = process.env.HOST ?? "localhost";
 const PORT: number = Number(process.env.PORT) || 3000;
 
 const app = express();
+app.set("trust proxy", 1); // Trust Railway
 app.disable("x-powered-by");
 
 /* -----------------------------
