@@ -8,7 +8,7 @@
     "dev": "npm run setup && node --watch dist/index.js",
     "build": "tsc",
     "setup": "npm install && npm run build",
-    "start": "npm run setup && node dist/index.js",
+    "start": "node dist/index.js",
     "debug": "npm run setup && node --inspect-brk --watch dist/index.js"
   },
   "repository": {
