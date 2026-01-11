@@ -13,6 +13,10 @@ import { initWebSocket } from "./services/socket.js";
 
 const HOST: string = process.env.HOST ?? "localhost";
 const PORT: number = Number(process.env.PORT) || 3000;
+const ALLOWED_ORIGINS: string[] = [
+  "http://localhost:5173",
+  process.env.FRONTEND_ORIGIN!
+].filter(Boolean);
 
 const app = express();
 app.set("trust proxy", 1); // Trust Railway
@@ -23,7 +27,7 @@ app.disable("x-powered-by");
 ------------------------------ */
 app.use(
   cors({
-    origin: `http://${HOST}:5173`,
+    origin: ALLOWED_ORIGINS,
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
     credentials: false
