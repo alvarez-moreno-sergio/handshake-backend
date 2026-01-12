@@ -21,6 +21,7 @@ const PORT: number = Number(process.env.PORT) || 3000;
 const ALLOWED_ORIGINS: string[] = [
   process.env.FRONTEND_ORIGIN!
 ].filter(Boolean);
+const WS_URL: string = process.env.WEBSOCKET_URL!;
 
 const app = express();
 app.set("trust proxy", 1);
@@ -40,7 +41,18 @@ app.use(
 
 app.use(
   helmet({
-    contentSecurityPolicy: false
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'"],
+        styleSrc: ["'self'"],
+        imgSrc: ["'self'"],
+        connectSrc: ["'self'", WS_URL],
+        fontSrc: ["'self'", "https://fonts.gstatic.com"],
+        frameAncestors: ["'none'"],
+        baseUri: ["'self'"]
+      }
+    }
   })
 );
 
