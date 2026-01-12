@@ -18,6 +18,16 @@ export function listHands(): Hand[] {
   return Array.from(hands.values());
 }
 
+export function rotateHandKeys(uuid: string, publicKey: string, publicSignKey: string): boolean {
+  let hand: Hand | undefined = getHand(uuid);
+  if (!hand) return false;
+  
+  hand.publicKey = publicKey;
+  hand.publicSignKey = publicSignKey;
+
+  return true;
+}
+
 export function clearHands() {
   hands.clear();
 }
