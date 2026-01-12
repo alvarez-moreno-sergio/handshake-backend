@@ -6,8 +6,8 @@ export default class Hand {
   constructor(
     public readonly name: string,
     public readonly avatarUrl: string,
-    public readonly publicKey: string,
-    public readonly publicSignKey: string
+    public publicKey: string,
+    public publicSignKey: string
   ) {
     if (!name || !publicKey || !publicSignKey) {
       throw new Error("Invalid parameters to create Hand");

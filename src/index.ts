@@ -10,16 +10,20 @@ import registerRouter from "./routes/register.js";
 import peersRouter from "./routes/peers.js";
 import clearRouter from "./routes/clear.js";
 import { initWebSocket } from "./services/socket.js";
+import dotenv from "dotenv";
+
+if (process.env.NODE_ENV !== "production"){
+  dotenv.config();
+}
 
 const HOST: string = process.env.HOST ?? "localhost";
 const PORT: number = Number(process.env.PORT) || 3000;
 const ALLOWED_ORIGINS: string[] = [
-  "http://localhost:5173",
   process.env.FRONTEND_ORIGIN!
 ].filter(Boolean);
 
 const app = express();
-app.set("trust proxy", 1); // Trust Railway
+app.set("trust proxy", 1);
 app.disable("x-powered-by");
 
 /* -----------------------------
