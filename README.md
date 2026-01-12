@@ -119,7 +119,19 @@ Starts the WebSocket server for local development.
 ---
 
 ## 7. Configuration
-None required.
+Environment variables are managed through Node. Choose one of the following, or adapt it to your deployment needs:
+
+- Example `.env` for DEVELOPMENT environment:
+
+```
+FRONTEND_ORIGIN=http://localhost:5173
+```
+
+- In PRODUCTION environment, these env vars should be defined:
+
+```
+FRONTEND_ORIGIN=https://handshake-frontend.onrender.com
+```
 
 ---
 
