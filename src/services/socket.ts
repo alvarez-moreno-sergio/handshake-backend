@@ -117,6 +117,22 @@ export function initWebSocket(server: any) {
           }
         }
 
+        // Handle encrypted file send
+        if (
+          (
+            msg.type === "file_metadata" 
+            || msg.type === "file_chunk"
+            || msg.type === "file_complete"
+          ) && hand
+        ) {
+          console.log(`Received file from Hand: ${hand.name} (${hand.uuid}) to Hand UUID: ${msg.to}: `, msg);
+          const peerConn = connections.get(msg.to);
+          if (peerConn) {
+            peerConn.socket.send(JSON.stringify(msg));
+          }
+          return;
+        }
+
         if (!hand) {
           socket.send(JSON.stringify({ error: "Handshake not established" }));
           return;
